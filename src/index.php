@@ -1,5 +1,10 @@
 <?php
 
-echo "<h1>Hi World</h1>";
+require_once __DIR__ . '/vendor/autoload.php';
 
-var_dump($anything);
+$loader = new Twig_Loader_Array(array(
+    'index' => 'Hello {{ name }}!'
+));
+$twig = new Twig_Environment($loader);
+
+echo $twig->render('index', array('name' => 'MarioDevment'));
