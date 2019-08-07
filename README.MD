@@ -1,0 +1,1 @@
+Este repositorio, solo es una practica y repaso al momento de crear imágenes en Docker, cada commits indica un proceso, capa y buenas practicas.
