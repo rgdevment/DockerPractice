@@ -1,7 +1,7 @@
 FROM composer as backend
 WORKDIR /app
 
-COPY src/. /app/
+COPY src/composer.json src/composer.lock /app/
 RUN composer install \
     --ignore-platform-reqs \
     --no-ansi \
@@ -10,6 +10,7 @@ RUN composer install \
     --no-interaction \
     --no-scripts
 
+COPY src/. /app/
 RUN composer dump-autoload --no-dev --optimize --classmap-authoritative
 
 #Multi-Stage
