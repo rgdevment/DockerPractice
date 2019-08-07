@@ -1,0 +1,7 @@
+{
+    "name": "docker/practice",
+    "description": "Docker example",
+    "require": {
+        "twig/twig": "^2.10"
+    }
+}
