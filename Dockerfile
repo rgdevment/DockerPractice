@@ -1,7 +1,7 @@
 FROM composer as backend
 WORKDIR /app
 
-COPY src/composer.json src/composer.lock /app/
+COPY sites/composer.json sites/composer.lock /app/
 RUN composer install \
     --ignore-platform-reqs \
     --no-ansi \
@@ -10,7 +10,7 @@ RUN composer install \
     --no-interaction \
     --no-scripts
 
-COPY src/. /app/
+COPY sites/. /app/
 RUN composer dump-autoload --no-dev --optimize --classmap-authoritative
 
 #Multi-Stage
@@ -24,4 +24,4 @@ RUN pecl install xdebug-2.6.0 \
 
 WORKDIR /app
 COPY --from=backend /app /var/www/html/
-COPY src/php.ini /usr/local/etc/php/
+COPY config/php.ini /usr/local/etc/php/
